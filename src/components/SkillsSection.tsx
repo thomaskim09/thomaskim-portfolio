@@ -44,7 +44,7 @@ const items: { [key: string]: LogoItem[][] } = {
       { imageUrl: '/images/RDS_10.png', alt: 'Logo 10' },
     ],
     [
-      { imageUrl: '/images/RDS_11.png', alt: 'Logo 11' }
+      { imageUrl: '/images/RDS_11.png', alt: 'Logo 11' },
       { imageUrl: '/images/RDS_12.png', alt: 'Logo 12' }
     ]
   ],
