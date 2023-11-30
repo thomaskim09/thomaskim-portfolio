@@ -25,43 +25,44 @@ const items: { [key: string]: LogoItem[][] } = {
   RD: [
     [
       { imageUrl: '/images/RDS_1.png', alt: 'Logo 1' },
-      { imageUrl: '/images/RDS_3.png', alt: 'Logo 3' },
+      { imageUrl: '/images/RDS_3.png', alt: 'Logo 2' },
     ],
     [
-      { imageUrl: '/images/RDS_2.png', alt: 'Logo 2' },
+      { imageUrl: '/images/RDS_2.png', alt: 'Logo 3' },
       { imageUrl: '/images/RDS_8.png', alt: 'Logo 4' },
     ],
     [
-      { imageUrl: '/images/RDS_5.png', alt: 'Logo 3' },
-      { imageUrl: '/images/RDS_6.png', alt: 'Logo 4' },
+      { imageUrl: '/images/RDS_5.png', alt: 'Logo 5' },
+      { imageUrl: '/images/RDS_6.png', alt: 'Logo 6' },
     ],
     [
-      { imageUrl: '/images/RDS_4.png', alt: 'Logo 4' },
-      { imageUrl: '/images/RDS_7.png', alt: 'Logo 3' },
+      { imageUrl: '/images/RDS_4.png', alt: 'Logo 7' },
+      { imageUrl: '/images/RDS_7.png', alt: 'Logo 8' },
     ],
     [
-      { imageUrl: '/images/RDS_9.png', alt: 'Logo 3' },
-      { imageUrl: '/images/RDS_10.png', alt: 'Logo 4' },
+      { imageUrl: '/images/RDS_9.png', alt: 'Logo 9' },
+      { imageUrl: '/images/RDS_10.png', alt: 'Logo 10' },
     ],
     [
-      { imageUrl: '/images/RDS_11.png', alt: 'Logo 3' }
+      { imageUrl: '/images/RDS_11.png', alt: 'Logo 11' }
+      { imageUrl: '/images/RDS_12.png', alt: 'Logo 12' }
     ]
   ],
   AD: [
     [
       { imageUrl: '/images/ADS_1.png', alt: 'Logo 1' },
-      { imageUrl: '/images/ADS_5.png', alt: 'Logo 3' },
+      { imageUrl: '/images/ADS_5.png', alt: 'Logo 2' },
     ],
     [
-      { imageUrl: '/images/ADS_4.png', alt: 'Logo 4' },
+      { imageUrl: '/images/ADS_4.png', alt: 'Logo 3' },
       { imageUrl: '/images/ADS_6.png', alt: 'Logo 4' },
     ],
     [
-      { imageUrl: '/images/ADS_2.png', alt: 'Logo 2' },
-      { imageUrl: '/images/ADS_7.png', alt: 'Logo 3' },
+      { imageUrl: '/images/ADS_2.png', alt: 'Logo 5' },
+      { imageUrl: '/images/ADS_7.png', alt: 'Logo 6' },
     ],
     [
-      { imageUrl: '/images/ADS_3.png', alt: 'Logo 3' },
+      { imageUrl: '/images/ADS_3.png', alt: 'Logo 7' },
     ]
   ]
 };

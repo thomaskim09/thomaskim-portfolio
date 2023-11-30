@@ -69,7 +69,7 @@ const projects = {
       imageUrls: ['/images/RDP3S1.png', '/images/RDP3S2.png']
     },
     {
-      title: 'portfolio Website',
+      title: 'Portfolio Website',
       subtitle: 'Yes, the website you are looking at!',
       description: 'I developed this website within 5 days while simultaneously mastering a new framework and programming language.',
       longDescription: "Venturing beyond my expertise in the MEAN stack, I embarked on a journey to explore the MERN stack while developing my portfolio website. What you're experiencing right now is the result of that exploration. The transition from MEAN to MERN was not just about adopting a new framework; it was about embracing React's user-friendly nature, integrating libraries that resonate like a harmonious melody within the website's architecture.\nThis journey not only expanded my technical skills but also highlighted my adaptability in swiftly transitioning between frameworks. The foundational knowledge I cultivated in the MEAN stack seamlessly translated into the MERN stack, enabling a smooth integration process. The joy of witnessing the React framework seamlessly blend into this website reaffirmed my passion for creating intuitive and engaging digital experiences. This project not only serves as my portfolio but also as a testament to my versatility as a full stack developer.",
