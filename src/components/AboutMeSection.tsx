@@ -59,7 +59,7 @@ const AboutMeSection = () => {
             {/* Image on the right */}
             <Grid item xs={12} md={6} >
               <div className="animate__animated animate__fadeIn">
-                <ImageContainer src="/images/Profile Image.jpg" alt="Thomas's Profile" width={500} height={500}
+                <ImageContainer src="/images/ProfileImage.jpg" alt="Thomas's Profile" width={500} height={500}
                   priority profileType={selectedProfile} />
               </div>
             </Grid>
