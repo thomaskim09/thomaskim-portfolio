@@ -82,7 +82,7 @@ const AboutMeSection = () => {
                   <Button variant="contained" startIcon={<WhatsAppIcon />}
                     href="https://api.whatsapp.com/send?phone=60186625753" target="_blank" rel="noopener noreferrer"
                     sx={{
-                      bgcolor: "#25D366", color: "#FFFFFF", mr: 2, padding: "7px 25px", borderRadius: "10px",
+                      bgcolor: "#25D366", color: "#FFFFFF", mr: 2, mb: 2, padding: "7px 25px", borderRadius: "10px",
                       "&:hover": { bgcolor: "#1A9247", color: "#FFFFFF" }
                     }}>
                     WhatsApp Me
@@ -91,7 +91,7 @@ const AboutMeSection = () => {
                   {/* Resume Button */}
                   <Button variant="contained" startIcon={<PDFIcon />} href="/files/v2023 Thomas_Kim_Resume.pdf"
                     target="_blank" rel="noopener noreferrer" sx={{
-                      bgcolor: "#FF5722", color: "#FFFFFF", mr: 2, padding: "7px 25px", borderRadius: "10px",
+                      bgcolor: "#FF5722", color: "#FFFFFF", mr: 2, mb: 2, padding: "7px 25px", borderRadius: "10px",
                       "&:hover": { bgcolor: "#D53300", color: "#FFFFFF" }
                     }}>
                     Resume
