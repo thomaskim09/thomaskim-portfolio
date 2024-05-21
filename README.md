@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Thomas Kim Portfolio
 
-## Getting Started
+Welcome to my portfolio repository! This repository showcases my strengths as a full-stack developer and multimedia graphic designer.
 
-First, run the development server:
+## About Me
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I'm Thomas Kim, a passionate full-stack developer and multimedia graphic designer with a keen eye for detail and a love for both programming and artistic expression. I specialize in building robust web applications while also bringing creative visions to life through multimedia design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Portfolio Website
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Explore my portfolio website to see examples of my work and learn more about my skills and experience:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[Thomas Kim Portfolio Website](https://thomaskim.netlify.app/)
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Programming Strengths:** As a full-stack developer, I excel in both front-end and back-end development. From crafting responsive user interfaces with HTML, CSS, and JavaScript to building scalable server-side applications with frameworks like Node.js and Django, I bring projects to life from conception to deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Artistic Skills:** My background in multimedia graphic design enables me to add a unique aesthetic touch to all my projects. Whether it's creating stunning visuals, crafting engaging user experiences, or designing captivating branding elements, I combine technical proficiency with artistic flair to deliver exceptional results.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies
 
-## Deploy on Vercel
+Here are some of the technologies I'm proficient in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Frontend: HTML, CSS, JavaScript, React.js, Next.js, Angular, Flutter, etc
+- Backend: Node.js, Express.js, etc
+- Databases: MongoDB, MySQL, MSACCESS, etc
+- Design Tools: Adobe Creative Suite (Photoshop, Illustrator, XD), Figma, etc
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Get in Touch
+
+I'm always open to new opportunities and collaborations. Feel free to reach out to me:
+
+- Email: [thomaskim.info@gmail.com](mailto:thomaskim.info@gmail.com)
+- LinkedIn: [Thomas Kim](https://www.linkedin.com/in/thomas-kim-82217b2a0/)
+
+Don't hesitate to get in touch if you have any questions or if you're interested in working together!
+
