@@ -45,6 +45,14 @@ const StyledButton = styled(Button) <{ profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'Second Hand Selling Platform Website',
+      subtitle: 'Connecting Buyers and Sellers of Pre-owned Items',
+      description: 'A comprehensive web platform for users to buy and sell second-hand items easily and efficiently.',
+      longDescription: 'This project involves developing a full-stack web application that facilitates the buying and selling of used goods. Key features include user authentication, product listings with images, search and filter functionalities, and a messaging system for buyer-seller communication. The goal is to create a user-friendly and secure platform for the circular economy. Technologies used will include [mention specific technologies if known, e.g., Next.js, React, Node.js, MongoDB].',
+      thumbnail: '/images/liuxuetao_1.jpg',
+      imageUrls: ['/images/liuxuetao_1.jpg', '/images/liuxuetao_2.jpg', '/images/liuxuetao_3.jpg', '/images/liuxuetao_4.jpg', '/images/liuxuetao_5.jpg']
+    },
+    {
       title: 'Vouchy',
       subtitle: 'A consumer-centric restaurant app (B2C)',
       description: 'Seamlessly manage vouchers, reservations, and food orders in one place. Elevate customer experience effortlessly.',
