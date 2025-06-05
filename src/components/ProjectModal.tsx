@@ -27,24 +27,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
   useEffect(() => {
     if (open) {
       const timeout = setTimeout(() => {
-        setLoading(false);        // Set loading to false after the timeout
+        setLoading(false);
       }, 1200);
 
-      setTimeoutId(timeout);      // Store the timeout ID
+      setTimeoutId(timeout);
     } else {
-      setLoading(true);           // Reset loading state when modal is closed
+      setLoading(true);
       if (timeoutId) {
-        clearTimeout(timeoutId);  // Clear the timeout if the modal is closed
+        clearTimeout(timeoutId);
       }
     }
 
     return () => {
       if (timeoutId) {
-        clearTimeout(timeoutId);  // Clear the timeout on unmount or modal close
+        clearTimeout(timeoutId);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);                     // Trigger effect when `open` changes
+  }, [open]);
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -57,7 +56,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box position="relative" minHeight="500px"> {/* Set a fixed height for the carousel */}
+        <Box position="relative" minHeight="500px">
           {loading && (
             <Box position="absolute" top="0" left="0" width="100%" height="65%" display="flex"
               alignItems="center" justifyContent="center" bgcolor="rgba(255, 255, 255, 1)"
@@ -67,8 +66,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
           )}
           <Carousel arrows={!loading} responsive={{ desktop: { breakpoint: { max: 3000, min: 0 }, items: 1 } }}>
             {project?.imageUrls.map((image, index) => (
-              <Image key={index} src={image} alt={`Image ${index}`} width={500} height={500}
-                style={{ height: 'auto', width: '100%' }} />
+              <Image
+                key={index}
+                src={image}
+                alt={`Image ${index}`}
+                width={1000}
+                height={1000}
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                  maxHeight: '65vh',
+                  objectFit: 'contain',
+                  margin: '0 auto',
+                  display: 'block',
+                }}
+              />
             ))}
           </Carousel>
           {project?.longDescription.split('\n').map((line, index) => (

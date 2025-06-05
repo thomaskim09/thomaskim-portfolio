@@ -1,4 +1,3 @@
-"use client"
 import { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Card, CardMedia, CardContent } from '@mui/material';
 import EyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -45,12 +44,12 @@ const StyledButton = styled(Button) <{ profileType: string }>`
 const projects = {
   RD: [
     {
-      title: 'Second Hand Selling Platform Website',
-      subtitle: 'Connecting Buyers and Sellers of Pre-owned Items',
+      title: 'LiuXueTao Marketplace',
+      subtitle: 'Connecting Pre-owned Buyers & Sellers',
       description: 'A comprehensive web platform for users to buy and sell second-hand items easily and efficiently.',
-      longDescription: 'This project involves developing a full-stack web application that facilitates the buying and selling of used goods. Key features include user authentication, product listings with images, search and filter functionalities, and a messaging system for buyer-seller communication. The goal is to create a user-friendly and secure platform for the circular economy. Technologies used will include [mention specific technologies if known, e.g., Next.js, React, Node.js, MongoDB].',
-      thumbnail: '/images/liuxuetao_1.jpg',
-      imageUrls: ['/images/liuxuetao_1.jpg', '/images/liuxuetao_2.jpg', '/images/liuxuetao_3.jpg', '/images/liuxuetao_4.jpg', '/images/liuxuetao_5.jpg']
+      longDescription: 'This project involves developing a full-stack web application designed specifically for overseas students studying locally, facilitating the buying and selling of used goods within their community. Key features include user authentication, comprehensive product listings with image uploads, advanced search and filter functionalities, and a secure in-app messaging system for direct buyer-seller communication. \nThe platform aims to create a user-friendly, secure, and convenient marketplace that supports the circular economy among international students. The frontend is built using **Flutter with Dart**, providing a cross-platform and visually appealing user experience, while the robust backend API is powered by **Node.js**, ensuring efficient data handling and smooth operations.',
+      thumbnail: '/images/liuxuetao_0.png',
+      imageUrls: ['/images/liuxuetao_1.png', '/images/liuxuetao_2.png', '/images/liuxuetao_3.png', '/images/liuxuetao_4.png', '/images/liuxuetao_5.png']
     },
     {
       title: 'Vouchy',
@@ -151,7 +150,6 @@ const PortfolioSection = () => {
     setOpenModal(false);
   };
 
-  // Scroll to the first item (start) when selectedProfile changes
   useEffect(() => {
     if (carouselRef.current) {
       carouselRef.current?.goToSlide(0);
@@ -186,21 +184,89 @@ const PortfolioSection = () => {
 
           <Carousel ref={carouselRef} responsive={responsive} showDots>
             {projects[selectedProfile].map((project, index) => (
-              <Card key={index} style={{ height: 'auto', maxHeight: '87vh', margin: '30px 10px' }}>
-                <CardMedia component="img" height="150" image={project.thumbnail} alt={project.title} sx={{ borderBottom: "1px solid #ccc" }} />
-                <CardContent >
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-                    {project.title}
-                  </Typography>
-                  <Typography variant="subtitle1" gutterBottom sx={{ italic: "true" }}>
-                    {project.subtitle}
-                  </Typography>
-                  <Typography variant="body2" gutterBottom sx={{ height: "100px" }}>
-                    {project.description}
-                  </Typography>
-                  <StyledButton variant="contained" startIcon={<EyeIcon />}
+              <Card
+                key={index}
+                style={{
+                  height: '470px',
+                  margin: '30px 10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  height="150"
+                  image={project.thumbnail}
+                  alt={project.title}
+                  style={{
+                    width: '100%',
+                    objectFit: 'cover',
+                  }}
+                  sx={{ borderBottom: "1px solid #ccc" }}
+                />
+                <CardContent
+                  sx={{
+                    flexGrow: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Box>
+                    <Typography
+                      variant="h5"
+                      gutterBottom
+                      sx={{
+                        fontWeight: "bold",
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {project.title}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      gutterBottom
+                      sx={{
+                        fontStyle: "italic",
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {project.subtitle}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{
+                        height: "100px",
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 4,
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {project.description}
+                    </Typography>
+                  </Box>
+                  <StyledButton
+                    variant="contained"
+                    startIcon={<EyeIcon />}
                     onClick={() => handleOpenModal(project)}
-                    profileType={selectedProfile} sx={{ padding: "7px 25px", borderRadius: "10px" }}>
+                    profileType={selectedProfile}
+                    sx={{
+                      padding: "7px 25px",
+                      borderRadius: "10px",
+                      mt: 2,
+                    }}
+                  >
                     Know More
                   </StyledButton>
                   <ProjectModal open={openModal} onClose={handleCloseModal} project={selectedProject} />

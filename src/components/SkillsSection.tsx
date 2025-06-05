@@ -46,7 +46,14 @@ const items: { [key: string]: LogoItem[][] } = {
     [
       { imageUrl: '/images/RDS_11.png', alt: 'Logo 11' },
       { imageUrl: '/images/RDS_12.png', alt: 'Logo 12' }
-    ]
+    ],
+    [
+      { imageUrl: '/images/Java.png', alt: 'Java Backend' },
+      { imageUrl: '/images/GithubAction.png', alt: 'GitHub Actions' },
+    ],
+    [
+      { imageUrl: '/images/Linux.png', alt: 'Linux VPS' },
+    ],
   ],
   AD: [
     [
