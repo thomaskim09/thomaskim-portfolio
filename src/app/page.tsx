@@ -8,6 +8,7 @@ import AboutMeSection from "@/components/AboutMeSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ContactMeSection from "@/components/ContactMeSection";
 import SkillsSection from "@/components/SkillsSection";
+import EmploymentHistorySection from "@/components/EmploymentHistorySection";
 import LoadingComponent from '@/components/Loading';
 import BackgroundColorChanger from '@/components/BackgroundColor';
 import { ProfileProvider } from '@/utils/ProfileContext';
@@ -44,6 +45,7 @@ const Home = () => {
               <AboutMeSection />
               <PortfolioSection />
               <SkillsSection />
+              <EmploymentHistorySection />
               <ContactMeSection />
             </Container>
           </ThemeProvider>
