@@ -15,7 +15,7 @@ const StyledContainer = styled(Box)`
   padding-bottom: 5vh;
 `;
 
-const ContactBackground = styled.div<{ profileType: string }>`
+const ContactBackground = styled.div<{ $profileType: string }>`
   position: relative;
   width: 100%;
   height: auto;
@@ -37,8 +37,8 @@ const ContactBackground = styled.div<{ profileType: string }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${({ profileType }) =>
-    profileType === "RD"
+    background: ${({ $profileType }) =>
+    $profileType === "RD"
       ? "linear-gradient(to right, #673AB7, #2196F3)"
       : "linear-gradient(to right, #853D1D  , #8B721F)"};
     border-radius: 20px;
@@ -58,7 +58,7 @@ const ContactMeSection = () => {
 
   return (
     <StyledContainer>
-      <ContactBackground profileType={selectedProfile} >
+      <ContactBackground $profileType={selectedProfile} >
         {/* Center-aligned title */}
         <Typography variant="h4" align="center" gutterBottom fontWeight={600}>Contact Me</Typography>
 

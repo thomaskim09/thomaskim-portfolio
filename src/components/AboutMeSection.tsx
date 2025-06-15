@@ -20,7 +20,7 @@ const ContentContainer = styled(Box)`
   }
 `;
 
-const ImageContainer = styled(Image) <{ profileType: string }>`
+const ImageContainer = styled(Image) <{ $profileType: string }>`
   width: 500px;
   height: auto;
   max-width: 500px;
@@ -32,8 +32,8 @@ const ImageContainer = styled(Image) <{ profileType: string }>`
     margin: auto;
   }
   transition: box-shadow 0.5s ease-in-out; /* Add transition effect */
-  box-shadow: ${({ profileType }) =>
-    profileType === "RD"
+  box-shadow: ${({ $profileType }) =>
+    $profileType === "RD"
       ? "-50px -50px 0 -40px #673AB7, 50px 50px 0 -40px #2196F3"
       : "-50px -50px 0 -40px #FF9800, 50px 50px 0 -40px #FFEB3B"};
 `
@@ -60,7 +60,7 @@ const AboutMeSection = () => {
             <Grid item xs={12} md={6} >
               <div className="animate__animated animate__fadeIn">
                 <ImageContainer src="/images/ProfileImage.jpg" alt="Thomas's Profile" width={500} height={500}
-                  priority profileType={selectedProfile} />
+                  priority $profileType={selectedProfile} />
               </div>
             </Grid>
             {/* Text on the Right */}

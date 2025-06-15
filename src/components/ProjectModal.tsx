@@ -45,6 +45,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
     };
   }, [open]);
 
+  const renderDescription = (description: string) => {
+    const boldedText = description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    return <Typography sx={{ mt: 2 }} dangerouslySetInnerHTML={{ __html: boldedText.replace(/\n/g, '<br />') }} />;
+  };
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
@@ -83,9 +88,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
               />
             ))}
           </Carousel>
-          {project?.longDescription.split('\n').map((line, index) => (
-            <Typography key={index} sx={{ mt: 2 }}>{line}</Typography>
-          ))}
+          {project?.longDescription && renderDescription(project.longDescription)}
         </Box>
       </DialogContent>
     </Dialog>
