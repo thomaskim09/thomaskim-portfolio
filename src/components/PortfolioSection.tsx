@@ -44,6 +44,14 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'WPS Office AI Add-in',
+      subtitle: 'Intelligent Spreadsheet Automation & AI Integration',
+      description: 'A custom WPS Office add-in designed to automate complex spreadsheet tasks, streamline data analysis, and integrate AI capabilities directly into your workflow, eliminating manual calculations and repetitive queries.',
+      longDescription: 'This project is a powerful, customizable **WPS Office add-in** specifically developed to enhance productivity within spreadsheet environments. It\'s engineered to **automate intricate and repetitive tasks** that typically require manual calculation, extensive research, or constant interaction with AI agents. \n\nKey features include **custom functions** to perform advanced data analysis, surveys, and complex calculations at lightning speed. The add-in also boasts **seamless integration with AI capabilities**, allowing users to leverage intelligent insights and generate content directly within their spreadsheets without waiting for external responses. This dramatically **reduces manual effort and accelerates data processing**, transforming time-consuming operations into instant actions. While initially focused on spreadsheets, the architecture is designed for **extensibility across other WPS Office applications**, offering the potential for tailored add-ins for documents, presentations, and more.',
+      thumbnail: '/images/wpstools_0.png',
+      imageUrls: ['/images/wpstools_1.jpeg', '/images/wpstools_2.jpeg', '/images/wpstools_3.jpeg']
+    },
+    {
       title: 'Browser Automation Tools',
       subtitle: 'An IG Stamping Auto App',
       description: 'A desktop application built with Python and Tkinter to automate data entry for Insurance Guarantee (IG) documents on the STAMPS website, featuring data management, intelligent PDF processing, and end-to-end web automation using Selenium.',
