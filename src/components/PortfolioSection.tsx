@@ -44,6 +44,14 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'GeminiScrape',
+      subtitle: 'Effortless Gemini Conversation Archiving',
+      description: 'A simple desktop app to scrape and export public Gemini conversations into clean, human-readable text files. GeminiScrape automates the process, saving you time and ensuring your records are always organized.',
+      longDescription: 'GeminiScrape is a cross-platform desktop application designed to make archiving public Gemini conversations fast and effortless. Built with Python and PySide6, it features a clean UI where you simply paste a Gemini share link, select your save directory, and let the app do the rest. Under the hood, GeminiScrape uses Selenium and BeautifulSoup to reliably extract each question and answer, compiling the entire conversation into a single, well-formatted `.txt` file.\n\nThe app provides real-time progress feedback and supports exporting to any directory of your choice. With its focus on simplicity and reliability, GeminiScrape is perfect for researchers, archivists, or anyone who wants to save and organize Gemini conversations for future reference. Packaging is easy with PyInstaller, making it available for Windows, macOS, and Linux.',
+      thumbnail: '/images/GeminiScrape_00.jpg',
+      imageUrls: ['/images/GeminiScrape_00.jpg', '/images/GeminiScrape_01.png', '/images/GeminiScrape_02.png']
+    },
+    {
       title: 'CodeCourier',
       subtitle: 'Effortless Project Packaging & Clean Code Delivery',
       description: 'A desktop utility that streamlines packaging your software projects for sharing or deployment. CodeCourier intelligently copies your project, automatically excluding files and folders based on .gitignore rules and your manual selections, ensuring a clean, clutter-free package every time.',
