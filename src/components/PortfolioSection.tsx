@@ -44,6 +44,22 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'CodeCourier',
+      subtitle: 'Effortless Project Packaging & Clean Code Delivery',
+      description: 'A desktop utility that streamlines packaging your software projects for sharing or deployment. CodeCourier intelligently copies your project, automatically excluding files and folders based on .gitignore rules and your manual selections, ensuring a clean, clutter-free package every time.',
+      longDescription: 'CodeCourier is a user-friendly desktop tool designed to simplify preparing software projects for sharing, uploading, or deployment. It intelligently scans .gitignore files throughout your project and allows you to manually exclude top-level files or folders, ensuring only the necessary files are included in your package.\n\nWith features like intelligent packaging, manual exclusions, session persistence, and a clean, progress-driven UI, CodeCourier makes it easy to create clean, portable copies of your code. The tool warns you before overwriting existing folders and remembers your last-used paths and settings for each project, saving you time and reducing errors.\n\nWhether you need to share your code with collaborators, upload it to an AI agent, or prepare it for deployment, CodeCourier ensures your packages are free from unnecessary files and clutter, making your workflow faster and more efficient.',
+      thumbnail: '/images/CodeCourier_00.png',
+      imageUrls: ['/images/CodeCourier_00.png', '/images/CodeCourier_01.png', '/images/CodeCourier_02.png']
+    },
+    {
+      title: 'NodeFlow',
+      subtitle: 'Qualitative Analysis Made Intuitive',
+      description: 'A modern desktop application for qualitative researchers and students, NodeFlow streamlines the coding and organization of text-based data. Featuring hierarchical node management, participant tracking, and powerful export options, it brings clarity and efficiency to qualitative analysis.',
+      longDescription: 'NodeFlow is a powerful desktop application designed for qualitative researchers and students to analyze text-based data, such as interview transcripts, with ease. Built with Python and PySide6, it offers a professional, project-based workflow that lets you create, manage, and organize research projects from start to finish.\n\nThe app features advanced hierarchical node coding, allowing you to create, reorder, and structure codes in a flexible multi-level tree, complete with automatic numbering. You can import documents in both .txt and .docx formats, assign them to specific participants, and code text segments using a dynamic, nested context menu.\n\nNodeFlow also provides comprehensive data export options, letting you save your coded data as structured JSON, formatted Word documents, or detailed Excel reports, all organized by your node hierarchy. With full CRUD management for participants and localization support via YAML files, NodeFlow streamlines the entire qualitative analysis process, making it accessible, efficient, and highly customizable for any research project.',
+      thumbnail: '/images/NodeFlow_00.png',
+      imageUrls: ['/images/NodeFlow_00.png', '/images/NodeFlow_01.png', '/images/NodeFlow_02.png', '/images/NodeFlow_03.png', '/images/NodeFlow_04.png', '/images/NodeFlow_05.png']
+    },
+    {
       title: 'WPS Office AI Add-in',
       subtitle: 'Intelligent Spreadsheet Automation & AI Integration',
       description: 'A custom WPS Office add-in designed to automate complex spreadsheet tasks, streamline data analysis, and integrate AI capabilities directly into your workflow, eliminating manual calculations and repetitive queries.',

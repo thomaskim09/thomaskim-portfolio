@@ -53,12 +53,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-          {project?.title}
-        </Typography>
-        <IconButton aria-label="close" onClick={onClose} sx={{ position: 'absolute', right: "10px", top: "10px", }}>
-          <CloseIcon />
-        </IconButton>
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: "bold" }}>
+            {project?.title}
+          </Typography>
+          <IconButton aria-label="close" onClick={onClose} sx={{ position: 'absolute', right: "10px", top: "10px", }}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
       </DialogTitle>
       <DialogContent>
         <Box position="relative" minHeight="500px">
