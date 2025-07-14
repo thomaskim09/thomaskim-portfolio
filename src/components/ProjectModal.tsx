@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, Typography, IconButton, CircularProgress, Box } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, Typography, IconButton, CircularProgress, Box, Fade } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Image from 'next/image';
+import styled from 'styled-components';
 
 interface Project {
   title: string;
@@ -20,80 +21,113 @@ interface ProjectModalProps {
   project: Project | null;
 }
 
+const StyledDialog = styled(Dialog)`
+  .MuiDialog-paper {
+    border-radius: 15px;
+    background-color: #1a1a1a;
+    color: white;
+    max-width: 900px;
+    width: 100%;
+  }
+`;
+
+const StyledCarousel = styled(Carousel)`
+  .react-multi-carousel-dot--active button {
+    background: #fff;
+  }
+  .react-multi-carousel-dot button {
+    border-color: #fff;
+  }
+`;
+
 const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) => {
   const [loading, setLoading] = useState(true);
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     if (open) {
-      const timeout = setTimeout(() => {
-        setLoading(false);
-      }, 1200);
-
-      setTimeoutId(timeout);
-    } else {
       setLoading(true);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      timeout = setTimeout(() => {
+        setLoading(false);
+      }, 800);
     }
-
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      clearTimeout(timeout);
     };
-  }, [open]);
+  }, [open, project]);
 
   const renderDescription = (description: string) => {
     const boldedText = description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    return <Typography sx={{ mt: 2 }} dangerouslySetInnerHTML={{ __html: boldedText.replace(/\n/g, '<br />') }} />;
+    return <Typography sx={{ mt: 3, lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: boldedText.replace(/\n/g, '<br />') }} />;
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>
+    <StyledDialog
+      open={open}
+      onClose={onClose}
+      TransitionComponent={Fade}
+      transitionDuration={500}
+    >
+      <DialogTitle sx={{ p: 3, borderBottom: '1px solid #333' }}>
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Typography variant="h5" component="div" gutterBottom sx={{ fontWeight: "bold" }}>
-            {project?.title}
-          </Typography>
-          <IconButton aria-label="close" onClick={onClose} sx={{ position: 'absolute', right: "10px", top: "10px", }}>
+          <Box>
+            <Typography variant="h5" component="div" sx={{ fontWeight: "bold" }}>
+              {project?.title}
+            </Typography>
+            <Typography variant="subtitle1" sx={{ color: '#bbb' }}>
+              {project?.subtitle}
+            </Typography>
+          </Box>
+          <IconButton aria-label="close" onClick={onClose} sx={{ color: 'white' }}>
             <CloseIcon />
           </IconButton>
         </Box>
       </DialogTitle>
-      <DialogContent>
-        <Box position="relative" minHeight="500px">
+      <DialogContent sx={{ p: 3 }}>
+        <Box position="relative" minHeight={{ xs: 'auto', md: '500px' }}>
           {loading && (
-            <Box position="absolute" top="0" left="0" width="100%" height="65%" display="flex"
-              alignItems="center" justifyContent="center" bgcolor="rgba(255, 255, 255, 1)"
-              zIndex={1}>
-              <CircularProgress />
+            <Box
+              position="absolute"
+              top={0} left={0} width="100%" height="100%"
+              display="flex" alignItems="center" justifyContent="center"
+              bgcolor="rgba(26, 26, 26, 0.9)"
+              zIndex={10}
+              sx={{ borderRadius: '15px' }}
+            >
+              <CircularProgress color="inherit" />
             </Box>
           )}
-          <Carousel arrows={!loading} responsive={{ desktop: { breakpoint: { max: 3000, min: 0 }, items: 1 } }}>
-            {project?.imageUrls.map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`Image ${index}`}
-                width={1000}
-                height={1000}
-                style={{
-                  width: 'auto',
-                  height: 'auto',
-                  maxHeight: '65vh',
-                  objectFit: 'contain',
-                  margin: '0 auto',
-                  display: 'block',
-                }}
-              />
-            ))}
-          </Carousel>
-          {project?.longDescription && renderDescription(project.longDescription)}
+          <Fade in={!loading} timeout={400}>
+            <Box>
+              <StyledCarousel
+                arrows={!loading}
+                responsive={{ desktop: { breakpoint: { max: 3000, min: 0 }, items: 1 } }}
+                showDots={true}
+                infinite={true}
+              >
+                {project?.imageUrls.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image}
+                    alt={`${project.title} - Image ${index + 1}`}
+                    width={1000}
+                    height={600}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxHeight: '60vh',
+                      objectFit: 'contain',
+                      borderRadius: '10px',
+                    }}
+                  />
+                ))}
+              </StyledCarousel>
+              {project?.longDescription && renderDescription(project.longDescription)}
+            </Box>
+          </Fade>
         </Box>
       </DialogContent>
-    </Dialog>
+    </StyledDialog>
   );
 };
 

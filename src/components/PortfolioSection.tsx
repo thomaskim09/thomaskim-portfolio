@@ -4,8 +4,14 @@ import EyeIcon from "@mui/icons-material/RemoveRedEye";
 import ProjectModal from '@/components/ProjectModal';
 import { useProfile } from '@/utils/ProfileContext';
 import styled from 'styled-components';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 interface Project {
   title: string;
@@ -19,28 +25,83 @@ interface Project {
 const StyledContainer = styled(Box)`
   position: relative;
   width: 100%;
-  min-height: 80vh; 
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  min-height: 100vh;
+  padding: 10vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const SwiperWrapper = styled.div`
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 480px;
+  }
+
+  .swiper-pagination-bullet {
+    background: white;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: ${({ theme }) => (theme.selectedProfile === 'RD' ? '#2196F3' : '#FF9800')};
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: ${({ theme }) => (theme.selectedProfile === 'RD' ? '#2196F3' : '#FF9800')};
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+const ProjectCard = styled(Card)`
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const StyledButton = styled(Button) <{ $profileType: string }>`
   width: 100%;
-  height: auto;
-  padding: "7px 25px";
-  border-radius: "10px";
-  background: ${({ $profileType }) => $profileType === 'RD'
-    ? 'linear-gradient(45deg, #673AB7 30%, #2196F3 90%)'
-    : 'linear-gradient(45deg, #FF9800 30%, #FFEB3B 90%)'};
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  background: ${({ $profileType }) =>
+    $profileType === 'RD'
+      ? 'linear-gradient(45deg, #673AB7 30%, #2196F3 90%)'
+      : 'linear-gradient(45deg, #FF9800 30%, #FFEB3B 90%)'};
   color: #ffffff;
+  margin-top: auto;
 
   &:hover {
-    background: ${({ $profileType }) => $profileType === 'RD'
-    ? 'linear-gradient(45deg,#46287D 30%, #0A6EBD 90%)'
-    : 'linear-gradient(45deg, #FF5722 30%, #EED500 90%)'};
-    color: #ffffff;
+    background: ${({ $profileType }) =>
+    $profileType === 'RD'
+      ? 'linear-gradient(45deg,#46287D 30%, #0A6EBD 90%)'
+      : 'linear-gradient(45deg, #FF5722 30%, #EED500 90%)'};
   }
-`
+`;
+
 const projects = {
   RD: [
     {
@@ -84,12 +145,12 @@ const projects = {
       imageUrls: ['/images/IGStampingAuto_0.png', '/images/IGStampingAuto_1.png', '/images/IGStampingAuto_2.png', '/images/IGStampingAuto_3.png']
     },
     {
-      title: 'LiuXueTao Marketplace',
+      title: 'Second Hand Marketplace',
       subtitle: 'Connecting Pre-owned Buyers & Sellers',
       description: 'A comprehensive web platform for users to buy and sell second-hand items easily and efficiently.',
       longDescription: 'This project involves developing a **full-stack web application** designed specifically for overseas students studying locally, facilitating the buying and selling of used goods within their community. Key features include **user authentication**, comprehensive **product listings with image uploads**, advanced **search and filter functionalities**, and a secure **in-app messaging system** for direct buyer-seller communication. \n\nThe platform aims to create a user-friendly, secure, and convenient marketplace that supports the circular economy among international students. The frontend is built using **Flutter with Dart**, providing a cross-platform and visually appealing user experience, while the robust backend API is powered by **Node.js**, ensuring efficient data handling and smooth operations.',
-      thumbnail: '/images/liuxuetao_0.png',
-      imageUrls: ['/images/liuxuetao_1.png', '/images/liuxuetao_2.png', '/images/liuxuetao_3.png', '/images/liuxuetao_4.png', '/images/liuxuetao_5.png']
+      thumbnail: '/images/liuxuetao_00.png',
+      imageUrls: ['/images/liuxuetao_00.png', '/images/liuxuetao_1.png', '/images/liuxuetao_2.png', '/images/liuxuetao_3.png', '/images/liuxuetao_4.png', '/images/liuxuetao_5.png']
     },
     {
       title: 'Vouchy',
@@ -174,11 +235,12 @@ const projects = {
       imageUrls: ['/images/ADP4S1.png']
     }]
 };
+
 const PortfolioSection = () => {
   const { selectedProfile } = useProfile();
   const [openModal, setOpenModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const carouselRef = useRef<any>(null);
+  const swiperRef = useRef<any>(null);
 
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
@@ -190,134 +252,86 @@ const PortfolioSection = () => {
   };
 
   useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current?.goToSlide(0);
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(0, 0);
     }
   }, [selectedProfile]);
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-
   return (
     <>
-      <StyledContainer>
-        <Box sx={{ p: 3 }}>
-          {/* Center-aligned title */}
-          <Typography variant="h4" align="center" gutterBottom fontWeight={600}>Portfolio</Typography>
+      <StyledContainer id="portfolio">
+        <Typography variant="h4" align="center" gutterBottom fontWeight={600}>
+          Portfolio
+        </Typography>
+        <Typography variant="body1" align="center" gutterBottom sx={{ mb: 1, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
+          Discover My Portfolio Highlights and Best Work
+        </Typography>
 
-          <Typography variant="body1" align="center" gutterBottom sx={{ mb: 1, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
-            Discover My Portfolio Highlights and Best Work
-          </Typography>
-
-          <Carousel ref={carouselRef} responsive={responsive} showDots>
-            {projects[selectedProfile].map((project, index) => (
-              <Card
-                key={index}
-                style={{
-                  height: '470px',
-                  margin: '30px 10px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  height="150" // This attribute is good, but let's ensure CSS also controls it.
-                  image={project.thumbnail}
-                  alt={project.title}
-                  style={{
-                    width: '100%',
-                    height: '150px', // Explicitly setting CSS height here
-                    objectFit: 'cover',
-                  }}
-                  sx={{ borderBottom: "1px solid #ccc" }}
-                />
-                <CardContent
-                  sx={{
-                    flexGrow: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <Box>
-                    <Typography
-                      variant="h5"
-                      gutterBottom
-                      sx={{
-                        fontWeight: "bold",
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                      }}
+        <SwiperWrapper theme={{ selectedProfile }}>
+          <Swiper
+            ref={swiperRef}
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={{ clickable: true }}
+            navigation={true}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {(projects[selectedProfile as keyof typeof projects] || []).map((project, index) => (
+              <SwiperSlide key={`${selectedProfile}-${index}`}>
+                <ProjectCard>
+                  <CardMedia
+                    component="img"
+                    image={project.thumbnail}
+                    alt={project.title}
+                    sx={{ height: 160, borderBottom: "1px solid rgba(255, 255, 255, 0.3)" }}
+                  />
+                  <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', padding: "16px" }}>
+                    <Box sx={{ flexGrow: 1 }}>
+                      <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mb: 1, lineHeight: 1.2, height: '3em' }}>
+                        {project.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'rgba(255, 255, 255, 0.8)',
+                          height: "125px", // Adjusted height
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        {project.description}
+                      </Typography>
+                    </Box>
+                    <StyledButton
+                      variant="contained"
+                      startIcon={<EyeIcon />}
+                      onClick={() => handleOpenModal(project)}
+                      $profileType={selectedProfile}
+                      sx={{ mt: 2 }}
                     >
-                      {project.title}
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      gutterBottom
-                      sx={{
-                        fontStyle: "italic",
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                      }}
-                    >
-                      {project.subtitle}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      sx={{
-                        height: "100px",
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 4,
-                        WebkitBoxOrient: 'vertical',
-                      }}
-                    >
-                      {project.description}
-                    </Typography>
-                  </Box>
-                  <StyledButton
-                    variant="contained"
-                    startIcon={<EyeIcon />}
-                    onClick={() => handleOpenModal(project)}
-                    $profileType={selectedProfile}
-                    sx={{
-                      padding: "7px 25px",
-                      borderRadius: "10px",
-                      mt: 2,
-                    }}
-                  >
-                    Know More
-                  </StyledButton>
-                  <ProjectModal open={openModal} onClose={handleCloseModal} project={selectedProject} />
-                </CardContent>
-              </Card>
+                      Know More
+                    </StyledButton>
+                  </CardContent>
+                </ProjectCard>
+              </SwiperSlide>
             ))}
-          </Carousel>
-        </Box>
-      </StyledContainer >
+          </Swiper>
+        </SwiperWrapper>
+      </StyledContainer>
+
+      <ProjectModal open={openModal} onClose={handleCloseModal} project={selectedProject} />
     </>
   );
-}
+};
 
 export default PortfolioSection;
