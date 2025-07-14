@@ -1,130 +1,138 @@
-import { useEffect, useRef } from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Image from "next/image";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useProfile } from '@/utils/ProfileContext';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 
-// Example content
+// Keyframes for the infinite scroll animation
+const scrollAnimation = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+`;
+
+// Main container for the whole section
+const StyledContainer = styled(Box)`
+  width: 100%;
+  padding: 10vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden; // Hide horizontal overflow
+`;
+
+// Wrapper for the scrolling ticker
+const TickerWrapper = styled.div`
+  width: 100%;
+  padding: 2rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-mask-image: linear-gradient(to right, transparent, #fff 10%, #fff 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #fff 10%, #fff 90%, transparent);
+`;
+
+// The scrolling track that contains the logos
+const TickerTrack = styled.div`
+  display: flex;
+  width: fit-content;
+  animation: ${scrollAnimation} 40s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+`;
+
+// Individual logo item
+const SkillLogo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 0 20px;
+  width: 150px;
+  height: 120px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+
+  img {
+    filter: grayscale(100%) opacity(0.7);
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    img {
+      filter: grayscale(0%) opacity(1);
+    }
+  }
+`;
+
+// --- Skill Data using your original images ---
 interface LogoItem {
   imageUrl: string;
   alt: string;
 }
 
-const StyledContainer = styled(Box)`
-  position: relative;
-  width: 100%;
-  height: 85vh; 
-  padding-top: 10vh;
-  padding-bottom: 10vh;
-  margin-bottom: 5vh;
-`;
-
-const items: { [key: string]: LogoItem[][] } = {
+const skills: { [key: string]: LogoItem[] } = {
   RD: [
-    [
-      { imageUrl: '/images/RDS_1.png', alt: 'Logo 1' },
-      { imageUrl: '/images/RDS_3.png', alt: 'Logo 2' },
-    ],
-    [
-      { imageUrl: '/images/RDS_2.png', alt: 'Logo 3' },
-      { imageUrl: '/images/RDS_8.png', alt: 'Logo 4' },
-    ],
-    [
-      { imageUrl: '/images/RDS_5.png', alt: 'Logo 5' },
-      { imageUrl: '/images/RDS_6.png', alt: 'Logo 6' },
-    ],
-    [
-      { imageUrl: '/images/RDS_4.png', alt: 'Logo 7' },
-      { imageUrl: '/images/RDS_7.png', alt: 'Logo 8' },
-    ],
-    [
-      { imageUrl: '/images/RDS_9.png', alt: 'Logo 9' },
-      { imageUrl: '/images/RDS_10.png', alt: 'Logo 10' },
-    ],
-    [
-      { imageUrl: '/images/RDS_11.png', alt: 'Logo 11' },
-      { imageUrl: '/images/RDS_12.png', alt: 'Logo 12' }
-    ],
-    [
-      { imageUrl: '/images/Java.png', alt: 'Java Backend' },
-      { imageUrl: '/images/GithubAction.png', alt: 'GitHub Actions' },
-    ],
-    [
-      { imageUrl: '/images/Linux.png', alt: 'Linux VPS' },
-    ],
+    { imageUrl: '/images/RDS_1.png', alt: 'Next.js' },
+    { imageUrl: '/images/RDS_3.png', alt: 'React.js' },
+    { imageUrl: '/images/RDS_2.png', alt: 'Node.js' },
+    { imageUrl: '/images/RDS_8.png', alt: 'Express.js' },
+    { imageUrl: '/images/Java.png', alt: 'Java' },
+    { imageUrl: '/images/RDS_5.png', alt: 'Flutter' },
+    { imageUrl: '/images/RDS_6.png', alt: 'MongoDB' },
+    { imageUrl: '/images/RDS_4.png', alt: 'MySQL' },
+    { imageUrl: '/images/RDS_7.png', alt: 'VBA' },
+    { imageUrl: '/images/RDS_9.png', alt: 'Docker' },
+    { imageUrl: '/images/GithubAction.png', alt: 'GitHub Actions' },
+    { imageUrl: '/images/Linux.png', alt: 'Linux' },
+    { imageUrl: '/images/RDS_11.png', alt: 'HTML5' },
+    { imageUrl: '/images/RDS_12.png', alt: 'CSS3' },
   ],
   AD: [
-    [
-      { imageUrl: '/images/ADS_1.png', alt: 'Logo 1' },
-      { imageUrl: '/images/ADS_5.png', alt: 'Logo 2' },
-    ],
-    [
-      { imageUrl: '/images/ADS_4.png', alt: 'Logo 3' },
-      { imageUrl: '/images/ADS_6.png', alt: 'Logo 4' },
-    ],
-    [
-      { imageUrl: '/images/ADS_2.png', alt: 'Logo 5' },
-      { imageUrl: '/images/ADS_7.png', alt: 'Logo 6' },
-    ],
-    [
-      { imageUrl: '/images/ADS_3.png', alt: 'Logo 7' },
-    ]
+    { imageUrl: '/images/ADS_1.png', alt: 'Adobe Photoshop' },
+    { imageUrl: '/images/ADS_5.png', alt: 'Adobe Illustrator' },
+    { imageUrl: '/images/ADS_4.png', alt: 'Adobe Premiere Pro' },
+    { imageUrl: '/images/ADS_6.png', alt: 'Adobe XD' },
+    { imageUrl: '/images/ADS_2.png', alt: 'Figma' },
+    { imageUrl: '/images/ADS_7.png', alt: 'UI/UX Design' },
+    { imageUrl: '/images/ADS_3.png', alt: 'Brand Design' },
   ]
 };
 
-const SkillsComponent: React.FC = () => {
+const SkillsSection: React.FC = () => {
   const { selectedProfile } = useProfile();
-  const carouselRef = useRef<any>(null);
+  const currentSkills = skills[selectedProfile];
 
-  // Scroll to the first item (start) when selectedProfile changes
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current?.goToSlide(0);
-    }
-  }, [selectedProfile]);
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-    },
-  };
+  // Duplicate the logos to create a seamless loop
+  const duplicatedSkills = [...currentSkills, ...currentSkills];
 
   return (
-    <>
-      <StyledContainer>
-        <Box sx={{ p: 3 }}>
-          <Typography variant="h4" align="center" gutterBottom fontWeight={600}>Skills</Typography>
+    <StyledContainer>
+      <Typography variant="h4" align="center" gutterBottom fontWeight={600}>
+        Technologies & Tools
+      </Typography>
+      <Typography variant="body1" align="center" gutterBottom sx={{ mb: 4, px: 2, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
+        Here are some of the key technologies and creative tools I work with.
+      </Typography>
 
-          <Typography variant="body1" align="center" gutterBottom sx={{ mb: 1, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
-            Overview of My Skills, Expertise, and Abilities
-          </Typography>
-
-          <Carousel ref={carouselRef} responsive={responsive} ssr showDots containerClass="carousel-container" >
-            {items[selectedProfile].map((itemRow, rowIndex) => (
-              <div key={rowIndex}>
-                {itemRow.map((item, colIndex) => (
-                  <Paper key={colIndex} elevation={3} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '30px 10px', padding: '15px', background: 'linear-gradient(to right, #1f1e1e 0%, #4D4855 100%)' }}>
-                    <Image src={item.imageUrl} alt={item.alt} width={100} height={100} />
-                  </Paper>
-                ))}
-              </div>
-            ))}
-          </Carousel>
-        </Box>
-      </StyledContainer>
-    </>
+      <TickerWrapper>
+        <TickerTrack>
+          {duplicatedSkills.map((item, index) => (
+            <SkillLogo key={index}>
+              <Image src={item.imageUrl} alt={item.alt} width={80} height={80} style={{ objectFit: 'contain' }} />
+            </SkillLogo>
+          ))}
+        </TickerTrack>
+      </TickerWrapper>
+    </StyledContainer>
   );
 };
 
-export default SkillsComponent;
+export default SkillsSection;
