@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Profile = 'RD' | 'AD'; // Define profile types
+export type Profile = 'RD' | 'AD'; // Define profile types
 
 interface ProfileContextProps {
   selectedProfile: Profile;
