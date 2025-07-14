@@ -139,7 +139,7 @@ const ContactMeSection = () => {
               Get in Touch
             </Typography>
             <Typography variant="h6" color="#ccc">
-              Have a project in mind or just want to say hello? I'd love to hear from you.
+              Have a project in mind or just want to say hello? I&apos;d love to hear from you.
             </Typography>
 
             <ContactStack spacing={3}>
