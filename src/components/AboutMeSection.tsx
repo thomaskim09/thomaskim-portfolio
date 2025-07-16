@@ -104,7 +104,7 @@ const AboutMeSection = () => {
 
             <CSSTransition in={true} timeout={500} classNames="fade" key={selectedProfile}>
               <div className="animate__animated animate__fadeInUp">
-                <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
+                <Typography variant="body1" sx={{ lineHeight: 1.8, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
                   {selectedProfile === 'RD' ?
                     "I am a skilled developer proficient in both front-end and back-end development. With experience in multimedia design and marketing, I offer a unique blend of technical expertise and creative vision. Excited to collaborate with you and deliver exceptional work." :
                     "I specialize in blending technical expertise with artistic vision, excelling in both front-end development and UI design. With a background in multimedia design and marketing, I bring a unique fusion of creativity and technical skill to every project. I'm eager to collaborate and deliver exceptional, visually appealing work."}

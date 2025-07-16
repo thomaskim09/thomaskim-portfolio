@@ -121,6 +121,14 @@ const projects = {
       imageUrls: ['/images/CodeCourier_00.png', '/images/CodeCourier_01.png', '/images/CodeCourier_02.png']
     },
     {
+      title: 'SUC Echo',
+      subtitle: 'Anonymous Communication Platform for SUC',
+      description: 'A digital space for the Southern University College (SUC) community to share fleeting thoughts, secrets, and moments, free from the social pressures of permanent, real-name platforms.',
+      longDescription: 'For SUC Echo, I engineered a robust, real-time anonymous communication platform using a modern full-stack approach. I architected the system with Next.js (TypeScript) for the frontend, leveraging Supabase (PostgreSQL) as the backend and Prisma as the ORM for efficient data modeling and access. I implemented real-time features using Supabase Realtime, enabling instant updates and seamless user experience. \n\nTo ensure user anonymity and security, I integrated FingerprintJS for device identification without compromising privacy. The project was deployed on Vercel for scalability and performance, and I utilized Tailwind CSS to deliver a clean, responsive UI. This project demonstrates my ability to design and deliver secure, scalable, and user-friendly web applications with a focus on both technical excellence and user experience.',
+      thumbnail: '/images/SUCEcho_00.png',
+      imageUrls: ['/images/SUCEcho_00.png', '/images/SUCEcho_01.png', '/images/SUCEcho_02.png', '/images/SUCEcho_03.png', '/images/SUCEcho_04.png']
+    },
+    {
       title: 'NodeFlow',
       subtitle: 'Qualitative Analysis Made Intuitive',
       description: 'A modern desktop application for qualitative researchers and students, NodeFlow streamlines the coding and organization of text-based data. Featuring hierarchical node management, participant tracking, and powerful export options, it brings clarity and efficiency to qualitative analysis.',
