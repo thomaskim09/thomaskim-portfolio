@@ -12,6 +12,7 @@ import EmploymentHistorySection from "@/components/EmploymentHistorySection";
 import LoadingComponent from '@/components/Loading';
 import BackgroundColorChanger from '@/components/BackgroundColor';
 import { ProfileProvider } from '@/utils/ProfileContext';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 const theme = createTheme({
   typography: {
@@ -23,12 +24,11 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating content loading with a timeout
     const timeout = setTimeout(() => {
-      setLoading(false); // Set loading to false after content is loaded
+      setLoading(false);
     }, 0);
 
-    return () => clearTimeout(timeout); // Cleanup timer on unmount (optional)
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -41,12 +41,24 @@ const Home = () => {
             <BackgroundColorChanger />
             <AppNavBar />
             <Container maxWidth="lg">
-              <LandingSection />
-              <AboutMeSection />
-              <PortfolioSection />
-              <SkillsSection />
-              <EmploymentHistorySection />
-              <ContactMeSection />
+              <ScrollAnimation animationName="fadeIn">
+                <LandingSection />
+              </ScrollAnimation>
+              <ScrollAnimation animationName="fadeInUp">
+                <AboutMeSection />
+              </ScrollAnimation>
+              <ScrollAnimation animationName="fadeInUp">
+                <PortfolioSection />
+              </ScrollAnimation>
+              <ScrollAnimation animationName="fadeInUp">
+                <SkillsSection />
+              </ScrollAnimation>
+              <ScrollAnimation animationName="fadeInUp">
+                <EmploymentHistorySection />
+              </ScrollAnimation>
+              <ScrollAnimation animationName="fadeInUp">
+                <ContactMeSection />
+              </ScrollAnimation>
             </Container>
           </ThemeProvider>
         )}

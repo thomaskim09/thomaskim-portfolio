@@ -1,19 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import Image from "next/image";
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { useProfile } from '@/utils/ProfileContext';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
 
-// Keyframes for the infinite scroll animation
-const scrollAnimation = keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-`;
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-// Main container for the whole section
+// --- Styled Components ---
 const StyledContainer = styled(Box)`
   width: 100%;
   padding: 10vh 0;
@@ -21,30 +17,19 @@ const StyledContainer = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden; // Hide horizontal overflow
+  overflow: hidden;
 `;
 
-// Wrapper for the scrolling ticker
-const TickerWrapper = styled.div`
+const SwiperWrapper = styled.div`
   width: 100%;
-  padding: 2rem 0;
-  background: rgba(255, 255, 255, 0.05);
-  -webkit-mask-image: linear-gradient(to right, transparent, #fff 10%, #fff 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, #fff 10%, #fff 90%, transparent);
-`;
-
-// The scrolling track that contains the logos
-const TickerTrack = styled.div`
-  display: flex;
-  width: fit-content;
-  animation: ${scrollAnimation} 40s linear infinite;
-
-  &:hover {
-    animation-play-state: paused;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  
+  .swiper-pagination-bullet-active {
+    background-color: ${({ theme }) => (theme.selectedProfile === 'RD' ? '#2196F3' : '#FF9800')};
   }
 `;
 
-// Individual logo item
 const SkillLogo = styled.div`
   display: flex;
   align-items: center;
@@ -52,11 +37,10 @@ const SkillLogo = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 20px;
-  margin: 0 20px;
   width: 150px;
   height: 120px;
-  flex-shrink: 0;
   transition: all 0.3s ease;
+  margin: 0 auto;
 
   img {
     filter: grayscale(100%) opacity(0.7);
@@ -72,7 +56,7 @@ const SkillLogo = styled.div`
   }
 `;
 
-// --- Skill Data using your original images ---
+// --- Skill Data ---
 interface LogoItem {
   imageUrl: string;
   alt: string;
@@ -110,27 +94,50 @@ const SkillsSection: React.FC = () => {
   const { selectedProfile } = useProfile();
   const currentSkills = skills[selectedProfile];
 
-  // Duplicate the logos to create a seamless loop
-  const duplicatedSkills = [...currentSkills, ...currentSkills];
-
   return (
     <StyledContainer>
       <Typography variant="h4" align="center" gutterBottom fontWeight={600}>
         Technologies & Tools
       </Typography>
-      <Typography variant="body1" align="center" gutterBottom sx={{ mb: 4, px: 2, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
+      <Typography variant="body1" align="center" gutterBottom sx={{ mb: 1, px: 2, fontFamily: selectedProfile === 'RD' ? 'Cascadia Code' : 'CatCafe' }}>
         Here are some of the key technologies and creative tools I work with.
       </Typography>
 
-      <TickerWrapper>
-        <TickerTrack>
-          {duplicatedSkills.map((item, index) => (
-            <SkillLogo key={index}>
-              <Image src={item.imageUrl} alt={item.alt} width={80} height={80} style={{ objectFit: 'contain' }} />
-            </SkillLogo>
+      <SwiperWrapper theme={{ selectedProfile }}>
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={30}
+          slidesPerView={2}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
+        >
+          {currentSkills.map((item, index) => (
+            <SwiperSlide key={index}>
+              <SkillLogo>
+                <Image src={item.imageUrl} alt={item.alt} width={80} height={80} style={{ objectFit: 'contain' }} />
+              </SkillLogo>
+            </SwiperSlide>
           ))}
-        </TickerTrack>
-      </TickerWrapper>
+        </Swiper>
+      </SwiperWrapper>
     </StyledContainer>
   );
 };

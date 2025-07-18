@@ -39,3 +39,7 @@ body {
   font-family: 'CatCafe';
   src: url('../../public/fonts/CatCafe.ttf') format('truetype');
 }
+
+.animate-on-scroll {
+  opacity: 0;
+}
