@@ -105,6 +105,14 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'TutorLearn',
+      subtitle: 'Rapid Prototyping for Online Tutoring',
+      description: 'A dynamic online tutoring platform built with Vue.js, designed for quick demos, prototyping, and gathering rapid user feedback to accelerate market validation.',
+      longDescription: 'TutorLearn is a proof-of-concept online tutoring platform developed using Vue.js. Its core strength lies in its ability to facilitate rapid prototyping and quick demos, making it an ideal tool for showcasing concepts and gathering immediate feedback from potential users. This focus on speed allows for agile development, ensuring that user insights are integrated quickly, driving efficient product iteration and market validation. \n\nIt is built to be a responsive and engaging static website, perfect for demonstrating functionality and collecting valuable insights without extensive backend development, making speed the absolute priority in its creation and utility.',
+      thumbnail: '/images/TutorLearn_01.png',
+      imageUrls: ['/images/TutorLearn_01.png', '/images/TutorLearn_02.png', '/images/TutorLearn_03.png', '/images/TutorLearn_04.png', '/images/TutorLearn_05.png']
+    },
+    {
       title: 'GeminiScrape',
       subtitle: 'Effortless Gemini Conversation Archiving',
       description: 'A simple desktop app to scrape and export public Gemini conversations into clean, human-readable text files. GeminiScrape automates the process, saving you time and ensuring your records are always organized.',

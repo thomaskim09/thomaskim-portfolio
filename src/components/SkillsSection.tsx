@@ -66,6 +66,7 @@ const skills: { [key: string]: LogoItem[] } = {
   RD: [
     { imageUrl: '/images/RDS_1.png', alt: 'Next.js' },
     { imageUrl: '/images/RDS_3.png', alt: 'React.js' },
+    { imageUrl: '/images/vuejs.png', alt: 'Vue.js' },
     { imageUrl: '/images/RDS_2.png', alt: 'Node.js' },
     { imageUrl: '/images/RDS_8.png', alt: 'Express.js' },
     { imageUrl: '/images/Java.png', alt: 'Java' },
