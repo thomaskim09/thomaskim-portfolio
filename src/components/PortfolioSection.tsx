@@ -105,6 +105,14 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'DSA Learner',
+      subtitle: 'A dynamic data structure & algorithm visualizer built with React and Vite.',
+      description: 'A responsive learning tool I developed with React to bring complex computer science concepts to life. This project showcases my ability to manage complex application state and build interactive, educational UIs.',
+      longDescription: 'DSA Learner is an interactive platform I built from the ground up to make learning data structures and algorithms more engaging. Powered by **React** and **Vite** for a fast, modern development workflow, this project is a testament to my front-end development skills.\n\nI leveraged React\'s component-based architecture and powerful state management hooks to create dynamic visualizations of structures like Binary Search Trees. Key features that showcase my technical abilities include:\n\n- **Real-Time Interactivity:** The UI instantly reflects user operations like node insertion and deletion, demonstrating a strong command of React state and event handling.\n- **Step-by-Step Animations:** I engineered user-controllable animations for complex tree traversal algorithms, showcasing my ability to translate abstract logic into clear, sequential visual steps.\n- **Dynamic Code Display:** The platform highlights the corresponding source code and Big O complexity for each action, demonstrating my focus on building a comprehensive and intuitive user experience.\n\nThis project not only proves my proficiency in creating sophisticated web applications with modern JavaScript frameworks but also my deep understanding of core computer science principles.',
+      thumbnail: '/images/DSALearner_00.png',
+      imageUrls: ['/images/DSALearner_00.png', '/images/DSALearner_01.png', '/images/DSALearner_02.png', '/images/DSALearner_03.png']
+    },
+    {
       title: 'TutorLearn',
       subtitle: 'Rapid Prototyping for Online Tutoring',
       description: 'A dynamic online tutoring platform built with Vue.js, designed for quick demos, prototyping, and gathering rapid user feedback to accelerate market validation.',
