@@ -29,7 +29,7 @@ const CenterAlignedContent = styled(Grid)`
 `;
 
 const jobTitles = {
-  RD: ['Software Engineer', 'Full Stack Developer', 'Mobile App Developer', 'Office Plugin Developer', 'Web Developer'],
+  RD: ['LLM API Integrater', 'Software Engineer', 'Full Stack Developer', 'Mobile App Developer', 'Office Plugin Developer', 'Web Developer', "DevOps", "Backend Developer", "Frontend Developer"],
   AD: ['Graphic Designer', 'UI/UX Designer', 'Video Editor', 'Web Designer', 'Video Content Creator'],
 };
 
