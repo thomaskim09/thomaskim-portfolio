@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, Typography, IconButton, CircularProgress, Box, Fade } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, Typography, IconButton, CircularProgress, Box, Fade, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import LinkIcon from '@mui/icons-material/Link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useProfile } from '@/utils/ProfileContext';
 
 interface Project {
   title: string;
@@ -13,6 +15,7 @@ interface Project {
   longDescription: string;
   thumbnail: string;
   imageUrls: string[];
+  url?: string;
 }
 
 interface ProjectModalProps {
@@ -40,8 +43,31 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 
+const StyledVisitButton = styled(Button) <{ $profileType: string }>`
+  width: 100%;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  background: ${({ $profileType }) =>
+    $profileType === 'RD'
+      ? 'linear-gradient(45deg, #673AB7 30%, #2196F3 90%)'
+      : 'linear-gradient(45deg, #FF9800 30%, #FFEB3B 90%)'};
+  color: #ffffff;
+  margin-top: 24px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: ${({ $profileType }) =>
+    $profileType === 'RD'
+      ? 'linear-gradient(45deg,#46287D 30%, #0A6EBD 90%)'
+      : 'linear-gradient(45deg, #FF5722 30%, #EED500 90%)'};
+    transform: scale(1.02);
+  }
+`;
+
 const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) => {
   const [loading, setLoading] = useState(true);
+  const { selectedProfile } = useProfile();
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -123,6 +149,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
                 ))}
               </StyledCarousel>
               {project?.longDescription && renderDescription(project.longDescription)}
+              {project?.url && (
+                <StyledVisitButton
+                  variant="contained"
+                  startIcon={<LinkIcon />}
+                  href={project.url}
+                  rel="noopener noreferrer"
+                  $profileType={selectedProfile}
+                >
+                  Visit Website
+                </StyledVisitButton>
+              )}
             </Box>
           </Fade>
         </Box>

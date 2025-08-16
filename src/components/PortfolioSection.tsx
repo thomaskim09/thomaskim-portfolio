@@ -20,6 +20,7 @@ interface Project {
   longDescription: string;
   thumbnail: string;
   imageUrls: string[];
+  url?: string;
 }
 
 const StyledContainer = styled(Box)`
@@ -110,7 +111,8 @@ const projects = {
       description: 'A responsive learning tool I developed with React to bring complex computer science concepts to life. This project showcases my ability to manage complex application state and build interactive, educational UIs.',
       longDescription: 'DSA Learner is an interactive platform I built from the ground up to make learning data structures and algorithms more engaging. Powered by **React** and **Vite** for a fast, modern development workflow, this project is a testament to my front-end development skills.\n\nI leveraged React\'s component-based architecture and powerful state management hooks to create dynamic visualizations of structures like Binary Search Trees. Key features that showcase my technical abilities include:\n\n- **Real-Time Interactivity:** The UI instantly reflects user operations like node insertion and deletion, demonstrating a strong command of React state and event handling.\n- **Step-by-Step Animations:** I engineered user-controllable animations for complex tree traversal algorithms, showcasing my ability to translate abstract logic into clear, sequential visual steps.\n- **Dynamic Code Display:** The platform highlights the corresponding source code and Big O complexity for each action, demonstrating my focus on building a comprehensive and intuitive user experience.\n\nThis project not only proves my proficiency in creating sophisticated web applications with modern JavaScript frameworks but also my deep understanding of core computer science principles.',
       thumbnail: '/images/DSALearner_00.png',
-      imageUrls: ['/images/DSALearner_00.png', '/images/DSALearner_01.png', '/images/DSALearner_02.png', '/images/DSALearner_03.png']
+      imageUrls: ['/images/DSALearner_00.png', '/images/DSALearner_01.png', '/images/DSALearner_02.png', '/images/DSALearner_03.png'],
+      url: 'https://dsa-learner.vercel.app/'
     },
     {
       title: 'TutorLearn',
@@ -118,7 +120,8 @@ const projects = {
       description: 'A dynamic online tutoring platform built with Vue.js, designed for quick demos, prototyping, and gathering rapid user feedback to accelerate market validation.',
       longDescription: 'TutorLearn is a proof-of-concept online tutoring platform developed using Vue.js. Its core strength lies in its ability to facilitate rapid prototyping and quick demos, making it an ideal tool for showcasing concepts and gathering immediate feedback from potential users. This focus on speed allows for agile development, ensuring that user insights are integrated quickly, driving efficient product iteration and market validation. \n\nIt is built to be a responsive and engaging static website, perfect for demonstrating functionality and collecting valuable insights without extensive backend development, making speed the absolute priority in its creation and utility.',
       thumbnail: '/images/TutorLearn_01.png',
-      imageUrls: ['/images/TutorLearn_01.png', '/images/TutorLearn_02.png', '/images/TutorLearn_03.png', '/images/TutorLearn_04.png', '/images/TutorLearn_05.png']
+      imageUrls: ['/images/TutorLearn_01.png', '/images/TutorLearn_02.png', '/images/TutorLearn_03.png', '/images/TutorLearn_04.png', '/images/TutorLearn_05.png'],
+      url: 'https://tutor-learn.vercel.app/'
     },
     {
       title: 'GeminiScrape',
@@ -126,7 +129,8 @@ const projects = {
       description: 'A simple desktop app to scrape and export public Gemini conversations into clean, human-readable text files. GeminiScrape automates the process, saving you time and ensuring your records are always organized.',
       longDescription: 'GeminiScrape is a cross-platform desktop application designed to make archiving public Gemini conversations fast and effortless. Built with Python and PySide6, it features a clean UI where you simply paste a Gemini share link, select your save directory, and let the app do the rest. Under the hood, GeminiScrape uses Selenium and BeautifulSoup to reliably extract each question and answer, compiling the entire conversation into a single, well-formatted `.txt` file.\n\nThe app provides real-time progress feedback and supports exporting to any directory of your choice. With its focus on simplicity and reliability, GeminiScrape is perfect for researchers, archivists, or anyone who wants to save and organize Gemini conversations for future reference. Packaging is easy with PyInstaller, making it available for Windows, macOS, and Linux.',
       thumbnail: '/images/GeminiScrape_00.jpg',
-      imageUrls: ['/images/GeminiScrape_00.jpg', '/images/GeminiScrape_01.png', '/images/GeminiScrape_02.png']
+      imageUrls: ['/images/GeminiScrape_00.jpg', '/images/GeminiScrape_01.png', '/images/GeminiScrape_02.png'],
+      url: 'https://thomaskim2.gumroad.com/l/ddyhde'
     },
     {
       title: 'CodeCourier',
@@ -134,7 +138,8 @@ const projects = {
       description: 'A desktop utility that streamlines packaging your software projects for sharing or deployment. CodeCourier intelligently copies your project, automatically excluding files and folders based on .gitignore rules and your manual selections, ensuring a clean, clutter-free package every time.',
       longDescription: 'CodeCourier is a user-friendly desktop tool designed to simplify preparing software projects for sharing, uploading, or deployment. It intelligently scans .gitignore files throughout your project and allows you to manually exclude top-level files or folders, ensuring only the necessary files are included in your package.\n\nWith features like intelligent packaging, manual exclusions, session persistence, and a clean, progress-driven UI, CodeCourier makes it easy to create clean, portable copies of your code. The tool warns you before overwriting existing folders and remembers your last-used paths and settings for each project, saving you time and reducing errors.\n\nWhether you need to share your code with collaborators, upload it to an AI agent, or prepare it for deployment, CodeCourier ensures your packages are free from unnecessary files and clutter, making your workflow faster and more efficient.',
       thumbnail: '/images/CodeCourier_00.png',
-      imageUrls: ['/images/CodeCourier_00.png', '/images/CodeCourier_01.png', '/images/CodeCourier_02.png']
+      imageUrls: ['/images/CodeCourier_00.png', '/images/CodeCourier_01.png', '/images/CodeCourier_02.png'],
+      url: 'https://thomaskim2.gumroad.com/l/yngtix'
     },
     {
       title: 'SUC Echo',
@@ -142,7 +147,8 @@ const projects = {
       description: 'A digital space for the Southern University College (SUC) community to share fleeting thoughts, secrets, and moments, free from the social pressures of permanent, real-name platforms.',
       longDescription: 'For SUC Echo, I engineered a robust, real-time anonymous communication platform using a modern full-stack approach. I architected the system with Next.js (TypeScript) for the frontend, leveraging Supabase (PostgreSQL) as the backend and Prisma as the ORM for efficient data modeling and access. I implemented real-time features using Supabase Realtime, enabling instant updates and seamless user experience. \n\nTo ensure user anonymity and security, I integrated FingerprintJS for device identification without compromising privacy. The project was deployed on Vercel for scalability and performance, and I utilized Tailwind CSS to deliver a clean, responsive UI. This project demonstrates my ability to design and deliver secure, scalable, and user-friendly web applications with a focus on both technical excellence and user experience.',
       thumbnail: '/images/SUCEcho_00.png',
-      imageUrls: ['/images/SUCEcho_00.png', '/images/SUCEcho_01.png', '/images/SUCEcho_02.png', '/images/SUCEcho_03.png', '/images/SUCEcho_04.png']
+      imageUrls: ['/images/SUCEcho_00.png', '/images/SUCEcho_01.png', '/images/SUCEcho_02.png', '/images/SUCEcho_03.png', '/images/SUCEcho_04.png'],
+      url: 'https://sucecho.vercel.app/'
     },
     {
       title: 'NodeFlow',
@@ -174,7 +180,8 @@ const projects = {
       description: 'A comprehensive web platform for users to buy and sell second-hand items easily and efficiently.',
       longDescription: 'This project involves developing a **full-stack web application** designed specifically for overseas students studying locally, facilitating the buying and selling of used goods within their community. Key features include **user authentication**, comprehensive **product listings with image uploads**, advanced **search and filter functionalities**, and a secure **in-app messaging system** for direct buyer-seller communication. \n\nThe platform aims to create a user-friendly, secure, and convenient marketplace that supports the circular economy among international students. The frontend is built using **Flutter with Dart**, providing a cross-platform and visually appealing user experience, while the robust backend API is powered by **Node.js**, ensuring efficient data handling and smooth operations.',
       thumbnail: '/images/liuxuetao_00.png',
-      imageUrls: ['/images/liuxuetao_00.png', '/images/liuxuetao_1.png', '/images/liuxuetao_2.png', '/images/liuxuetao_3.png', '/images/liuxuetao_4.png', '/images/liuxuetao_5.png']
+      imageUrls: ['/images/liuxuetao_00.png', '/images/liuxuetao_1.png', '/images/liuxuetao_2.png', '/images/liuxuetao_3.png', '/images/liuxuetao_4.png', '/images/liuxuetao_5.png'],
+      url: 'https://liuxuetao-a7070.web.app/'
     },
     {
       title: 'Vouchy',
@@ -206,7 +213,8 @@ const projects = {
       description: 'I developed this website within 5 days while simultaneously mastering a new framework and programming language.',
       longDescription: "Venturing beyond my expertise in the MEAN stack, I embarked on a journey to explore the **MERN stack** while developing my portfolio website. What you're experiencing right now is the result of that exploration. The transition from **MEAN to MERN** was not just about adopting a new framework; it was about embracing **React's user-friendly nature**, integrating libraries that resonate like a harmonious melody within the website's architecture.\n\nThis journey not only expanded my technical skills but also highlighted my **adaptability** in swiftly transitioning between frameworks. The foundational knowledge I cultivated in the MEAN stack seamlessly translated into the MERN stack, enabling a smooth integration process. The joy of witnessing the React framework seamlessly blend into this website reaffirmed my passion for creating **intuitive and engaging digital experiences**. This project not only serves as my portfolio but also as a testament to my **versatility as a full stack developer**.",
       thumbnail: '/images/RDP4.png',
-      imageUrls: ['/images/RDP4S1.png', '/images/RDP4S2.png']
+      imageUrls: ['/images/RDP4S1.png', '/images/RDP4S2.png'],
+      url: 'https://thomaskim.netlify.app/'
     },
     {
       title: 'Member Card App',
@@ -358,4 +366,4 @@ const PortfolioSection = () => {
   );
 };
 
-export default PortfolioSection;
+export default PortfolioSection;  
