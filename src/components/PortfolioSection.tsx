@@ -112,7 +112,6 @@ const projects = {
       longDescription: "SchemaVisualizer is an interactive tool I built to simplify the process of understanding and presenting complex database and API schemas. Powered by **React**, **D3.js**, and modern visualization techniques, it allows developers and stakeholders to explore schema structures dynamically.\n\nKey technical highlights include:\n\n- **Interactive Diagrams:** Users can expand, collapse, and highlight relationships between tables or entities, showcasing my skill in building advanced visualization UIs.\n- **JSON Schema Import:** Schemas can be imported in JSON format, demonstrating my ability to parse and transform backend artifacts into visual data.\n- **Search & Highlight:** The platform includes advanced filtering and search, making large schemas easier to navigate.\n\nThis project proves my ability to bridge backend architecture with intuitive frontend visualization, helping both technical and non-technical users understand complex systems quickly.",
       thumbnail: "/images/SchemaVisualizer_00.png",
       imageUrls: ["/images/SchemaVisualizer_00.png", "/images/SchemaVisualizer_01.png", "/images/SchemaVisualizer_02.png", "/images/SchemaVisualizer_03.png", "/images/SchemaVisualizer_04.png", "/images/SchemaVisualizer_05.png"],
-      url: "https://github.com/thomaskimdev/SchemaVisualizer"
     },
     {
       title: "StockTracker",
@@ -120,8 +119,7 @@ const projects = {
       description: "A feature-rich desktop application I developed to help traders and investors efficiently monitor, filter, and analyze stock market data. This project highlights my ability to integrate real-time data scraping with an intuitive UI.",
       longDescription: "StockTracker is a practical desktop application I built to assist investors in tracking and analyzing stock performance. Built with **Python** and **PySide6**, it integrates data scraping, filtering, and chart embedding into one seamless interface.\n\nKey technical highlights include:\n\n- **Custom Filtering Engine:** Users can apply filters such as price ranges and market caps with real-time updates, showcasing my ability to design dynamic data pipelines.\n- **Watchlist Management:** A user-friendly interface to create and manage personalized watchlists, emphasizing my skills in persistent data storage and user-centered design.\n- **Chart Integration:** Embedded chart links allow for quick technical analysis, demonstrating my ability to combine external APIs with desktop UI frameworks.\n\nThis project demonstrates my proficiency in desktop application development, data integration, and user experience design for financial tools.",
       thumbnail: "/images/StockTracker_00.png",
-      imageUrls: ["/images/StockTracker_00.png", "/images/StockTracker_01.png", "/images/StockTracker_02.png", "/images/StockTracker_03.png", "/images/StockTracker_04.png", "/images/StockTracker_05.png"],
-      url: "https://github.com/thomaskimdev/StockTracker"
+      imageUrls: ["/images/StockTracker_00.png", "/images/StockTracker_01.png", "/images/StockTracker_02.png", "/images/StockTracker_03.png", "/images/StockTracker_04.png", "/images/StockTracker_05.png"]
     },
     {
       title: 'DSA Learner',
