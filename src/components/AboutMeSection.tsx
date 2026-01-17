@@ -132,7 +132,7 @@ const AboutMeSection = () => {
               <Button
                 variant="contained"
                 startIcon={<PDFIcon />}
-                href="/files/v2025 Thomas_Kim_Resume.pdf"
+                href="/files/v2026_Thomas_Kim_Resume.pdf"
                 target="_blank" rel="noopener noreferrer"
                 sx={{
                   bgcolor: "#FF5722", color: "#FFFFFF", padding: "10px 25px", borderRadius: "10px",
