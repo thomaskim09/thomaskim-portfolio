@@ -106,6 +106,14 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: 'Inventory Planner',
+      subtitle: 'Excel VBA Add-in for Container Planning',
+      description: 'An Excel VBA UserForm tool that imports inventory into a MASTER sheet, manages container limits, generates container plans, audits data issues, and exports logs with a Developer view for hidden sheets.',
+      longDescription: "Inventory Planner is an Excel VBA add-in built for FoShan Aluminium to streamline inventory planning and auditing inside Excel. The tool runs as a UserForm with dedicated tabs for Dashboard, Containers, Planning, Audit, Logs, and Developer tools, keeping workflows fast and safe.\n\nKey highlights include:\n\n- **Inventory Import + Audit:** Import or update MASTER data, run validation checks for missing or invalid values, and optionally mark issues without deleting data.\n- **Container Planning:** Maintain container definitions with max weight limits, and generate a container plan from MASTER with active-only dropdowns.\n- **Logging and Dev Tools:** All key actions write to logs with a clear action code and remark, and a Developer view can toggle or export internal config and log sheets.\n\nThis project demonstrates my ability to build stable VBA tooling with clear UX flows, data safety rules, and diagnostics for business operations.",
+      thumbnail: '/images/InventoryPlanner_00.png',
+      imageUrls: ['/images/InventoryPlanner_01.png', '/images/InventoryPlanner_02.png', '/images/InventoryPlanner_03.png', '/images/InventoryPlanner_04.png', '/images/InventoryPlanner_05.png']
+    },
+    {
       title: "SchemaVisualizer",
       subtitle: "An interactive schema visualization tool for database and API design.",
       description: "A visualization platform I created to transform abstract database schemas into interactive, navigable diagrams. This project showcases my backend understanding and ability to communicate complex designs visually.",
