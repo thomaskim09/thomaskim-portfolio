@@ -106,6 +106,18 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: "Web Watcher",
+      subtitle: "A desktop automation and visual change detection tool for web workflows.",
+      description: "A Windows desktop application that automates human-like browser interactions, detects meaningful page changes via visual comparison, and sends real-time notifications. Built to monitor workflows where APIs or DOM access are unavailable.",
+      longDescription: "Web Watcher is a desktop automation and monitoring tool I built to solve a common real-world problem: detecting meaningful changes on web pages that cannot be reliably monitored via APIs or DOM-based automation.\n\nBuilt with **Python** and **PySide6**, Web Watcher operates at the screen level, simulating real human interactions such as clicking, scrolling, typing, and key presses. It then determines success by visually comparing before-and-after screenshots using perceptual hashing, rather than relying on fragile selectors or page structure.\n\nKey technical highlights include:\n\n- **Human-like Automation Engine:** Supports configurable action sequences including clicks, scrolls, text input, key presses, hotkeys, and recorded user interactions, enabling reliable automation of complex web workflows.\n- **Visual Change Detection:** Uses perceptual image hashing to compute a \"change score\" between screenshots, with adjustable sensitivity and multi-pass confirmation to avoid false positives.\n- **Action Recorder:** Includes an action listener mode that records real mouse and keyboard interactions and converts them into replayable automation steps.\n- **Proof-Based UX:** Displays the exact before-and-after screenshots used for detection, along with timestamps and change metrics, giving users full trust and transparency in results.\n- **Notification System:** Integrates ntfy push notifications and local desktop alerts to notify users immediately when a change is detected.\n- **Professional Desktop UX:** Designed with a modern PySide6 interface, focusing on clarity, minimal clutter, and value-first dashboards rather than technical configuration noise.\n\nThis project demonstrates my ability to design robust automation systems, bridge low-level OS interactions with high-level UX, and build tools that remain reliable even when traditional web automation approaches fail.",
+      thumbnail: "/images/WebWatcher_00.jpg",
+      imageUrls: [
+        "/images/WebWatcher_01.png",
+        "/images/WebWatcher_02.png",
+        "/images/WebWatcher_03.png",
+      ]
+    },
+    {
       title: 'Inventory Planner',
       subtitle: 'Excel VBA Add-in for Container Planning',
       description: 'An Excel VBA UserForm tool that imports inventory into a MASTER sheet, manages container limits, generates container plans, audits data issues, and exports logs with a Developer view for hidden sheets.',
