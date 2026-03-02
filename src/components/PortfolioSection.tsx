@@ -106,6 +106,18 @@ const StyledButton = styled(Button) <{ $profileType: string }>`
 const projects = {
   RD: [
     {
+      title: "Appointment Helper",
+      subtitle: "A desktop availability analyzer and appointment automation tool for high-demand booking systems.",
+      description: "A Windows desktop application that analyzes appointment slot availability in real time, visualizes booking data clearly, and submits optimized appointment requests with rapid iteration support.",
+      longDescription: " Appointment Helper is a purpose-built desktop tool designed to solve a practical challenge: securing appointment slots in high-demand booking systems where timing, clarity, and precision matter.\n\nBuilt with **Python** and **PySide6**, the application acts as a structured frontend over existing API endpoints. It provides both analytical visibility into appointment availability and controlled automation for submission workflows, allowing users to react quickly when slots open.\n\nInstead of relying on manual browser refresh cycles, the system sends structured multipart requests directly to the backend, parses responses safely, and transforms raw JSON payloads into clear visual insights.\n\nKey technical highlights include:\n\n- **Availability Intelligence Layer:** Parses slot-based JSON responses and computes actionable metrics such as total returned days, bookable days, available slot counts, and earliest available time.\n- **Interactive Slot Selection:** Users can click on detected bookable slots to instantly populate appointment forms, dramatically reducing friction and human error during submission.\n- **Robust Response Handling:** Designed to never hide backend responses. All HTTP status codes, structured messages, and raw payloads are captured and displayed to ensure success signals are never missed.\n- **Profile-Based Submission Engine:** Supports multiple company profiles with persistent configuration, enabling fast switching and rapid iteration across different booking entities.\n- **Non-Blocking Architecture:** Implements threaded network operations to ensure the UI remains responsive during repeated availability checks.\n- **Professional Desktop UX:** Clean, data-first interface built with PySide6, emphasizing clarity, speed, and decision-making efficiency rather than unnecessary visual complexity.\n- **Executable Distribution:** Packaged using PyInstaller for standalone Windows deployment, enabling distribution without Python installation dependencies.\n\nThis project demonstrates my ability to design practical automation tooling around real-world API constraints, build resilient client-side request orchestration systems, and transform low-level network responses into meaningful, high-clarity user workflows.",
+      thumbnail: "/images/AppointmentHelper_00.png",
+      imageUrls: [
+        "/images/AppointmentHelper_01.png",
+        "/images/AppointmentHelper_02.png",
+        "/images/AppointmentHelper_03.png"
+      ]
+    },
+    {
       title: "Web Watcher",
       subtitle: "A desktop automation and visual change detection tool for web workflows.",
       description: "A Windows desktop application that automates human-like browser interactions, detects meaningful page changes via visual comparison, and sends real-time notifications. Built to monitor workflows where APIs or DOM access are unavailable.",
